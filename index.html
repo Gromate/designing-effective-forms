@@ -117,15 +117,21 @@
 
             <!-- Dodatkowe pola -->
             <fieldset>
-                <legend>Dodatkowe informacje</legend>
-                <div class="mb-3">
-                    <label for="vatNumber" class="form-label">Numer VAT</label>
-                    <input type="text" class="form-control" id="vatNumber" placeholder="Np. PL1234567890" aria-describedby="vatHelp">
-                    <div id="vatHelp" class="form-text">Kod kraju i seria cyfr unikalnych dla podmiotu gospodarczego.</div>
-                </div>
-                <div class="mb-3">
-                    <label for="invoiceData" class="form-label">Dane do faktury</label>
-                    <textarea class="form-control" id="invoiceData" rows="3" placeholder="Np. Jan Kowalski, ul. Marszałkowska 10, 00-001 Warszawa"></textarea>
+                <legend>
+                    <button class="btn btn-link p-0" type="button" data-bs-toggle="collapse" data-bs-target="#additionalInfo" aria-expanded="false" aria-controls="additionalInfo">
+                        Dodatkowe informacje
+                    </button>
+                </legend>
+                <div class="collapse" id="additionalInfo">
+                    <div class="mb-3">
+                        <label for="vatNumber" class="form-label">Numer VAT</label>
+                        <input type="text" class="form-control" id="vatNumber" placeholder="Np. PL1234567890" aria-describedby="vatHelp">
+                        <div id="vatHelp" class="form-text">Kod kraju i seria cyfr unikalnych dla podmiotu gospodarczego.</div>
+                    </div>
+                    <div class="mb-3">
+                        <label for="invoiceData" class="form-label">Dane do faktury</label>
+                        <textarea class="form-control" id="invoiceData" rows="3" placeholder="Np. Jan Kowalski, ul. Marszałkowska 10, 00-001 Warszawa"></textarea>
+                    </div>
                 </div>
             </fieldset>
 
