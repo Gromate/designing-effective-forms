@@ -29,7 +29,8 @@ function getCountryByIP() {
         .then(response => response.json())
         .then(data => {
             const country = data.country;
-            // TODO inject country to form and call getCountryCode(country) function
+            countryInput.value = country; // Automatyczne ustawienie kraju
+            getCountryCode(country); // Wywołanie funkcji do pobrania kodu kierunkowego
         })
         .catch(error => {
             console.error('Błąd pobierania danych z serwera GeoJS:', error);
@@ -40,25 +41,25 @@ function getCountryCode(countryName) {
     const apiUrl = `https://restcountries.com/v3.1/name/${countryName}?fullText=true`;
 
     fetch(apiUrl)
-    .then(response => {
-        if (!response.ok) {
-            throw new Error('Błąd pobierania danych');
-        }
-        return response.json();
-    })
-    .then(data => {        
-        const countryCode = data[0].idd.root + data[0].idd.suffixes.join("")
-        // TODO inject countryCode to form
-    })
-    .catch(error => {
-        console.error('Wystąpił błąd:', error);
-    });
+        .then(response => {
+            if (!response.ok) {
+                throw new Error('Błąd pobierania danych');
+            }
+            return response.json();
+        })
+        .then(data => {
+            const countryCode = data[0].idd.root + data[0].idd.suffixes.join("");
+            document.getElementById('countryCode').value = countryCode; // Automatyczne ustawienie kodu kierunkowego
+        })
+        .catch(error => {
+            console.error('Wystąpił błąd:', error);
+        });
 }
 
-
 (() => {
-    // nasłuchiwania na zdarzenie kliknięcia myszką
+    // Nasłuchiwanie na zdarzenie kliknięcia myszką
     document.addEventListener('click', handleClick);
 
     fetchAndFillCountries();
-})()
+    getCountryByIP(); // Automatyczne uzupełnianie kraju i kodu kierunkowego
+})();
